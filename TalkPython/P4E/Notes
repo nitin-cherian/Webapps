@@ -1,0 +1,189 @@
+1. Starting Web Apps in Pyramid from Cookiecutter
+=================================================
+
+1. cookiecutter https://github.com/Pylons/pyramid-cookiecutter-starter
+
+2. cd my_test_web_app/
+
+3. python3 -m venv .env
+
+4. . .env/bin/activate
+
+5. pip install --upgrade setuptools   # setuptools could be woefully out of date.
+
+6. python setup.py develop   # Register the webapp as a package. This is a requirement for pyramid. Pycharm takes care of this automatically.
+
+7. pserve development.ini    # Serve the webapp for development.
+
+Some errors and resolution:
+
+1. build_cache_id shows weirdly its arguments in html
+=====================================================
+
+Resolution: Make sure the arguments are strings with only single quotation, no double quotation.
+
+2. in html build_cache_id reports MISSING_FILE
+==============================================
+
+Resolution: Put static_cache.py in the same level as the static folder.
+
+8. Install static components inside the static folder using bower
+# bower install bootstrap-css font-awesome html5shiv jquery respond
+
+2.CSS
+=====
+
+1. CSS Selectors
+----------------
+
+-- element1 element2
+
+   -- space -- element2 somewhere down in the hierarchy, can be an indirect child
+
+-- element1 > element2
+
+   -- > -- element2 who is a direct child of element1
+
+-- element1#element2
+
+   -- no space -- and operation. both conditions element1 and element2 must be satisfied
+
+               -- an easier way to remember is -- element1 with element2 eg: tr#latest_episode --> tr with id=latest_episode
+
+-- element1, element2
+
+   -- comma -- or operation. select element1 and element2
+               
+               -- selects either of the elements even if the other element does not exist.
+
+   
+2. CSS Layout
+-------------
+
+-- by default some elements are block --> take up entire space they can extend to
+
+-- display: inline-block; -->  take up only as much space as needed and will also have the block properties.
+
+3. CSS Floating
+---------------
+
+-- float: right;
+-- in HTML, the thing you want to wrap around another thing which is floating should go after it. 
+
+-- clear float trick
+   -- <div style="clear: both"></div> --> Put this where you want to stop the float.
+   -- This prevents elements after it to stop wrapping around.
+
+3. Handler/Controllers
+=====================
+
+-- include pyramid_handlers package as a requirement in setup.py. This makes the package as requirement for deployment also.
+
+-- includde pyramid_handlers usinc 'config.include' in __init__.py. 
+
+-- Using handlers/controllers
+
+   -- import pyramid_handlers
+
+   -- create a class for controller and put the functions you want to call using routes in it.
+
+   -- decorate theses functions with pyramid_handlers.action()
+
+   -- Then in the main() of __init__.py, use add_handler to register all the decorated methods on the clsss
+
+      config.add_handler(...)
+
+4. BaseController
+================
+
+-- Move all the common functionality into this class and let all other controller inherit from it
+
+-- Move the __init__(self, request) into this class
+
+   -- This is the initializer for the controller(view)
+
+   -- The attributes initialized in the initializer can be accessed in the templates using ${view.<attribute>}
+
+      eg: ${view.build_cache_id}
+
+      where in __init__, 
+
+      self.build_cache_id = static_cache.build_cache_id
+
+5. Plugging leaky actions
+=========================
+
+-- If not plugged, any function defined in the Controller classes can be invoked using for eg: /home/{action}
+
+   -- This is a potential security issue as anybody can execute our code like executing commands on our DB.
+
+-- To avoid this Michael had written a class decorator @suppress in file suppressor.py
+
+   -- Use this decorator on functions which we do not want to be exposed.
+
+6. Using cache busting script(static_cache.py)
+=============================================
+
+-- Move the cache busting file into a separate folder
+
+   -- for this the script needs to be adjusted accordingly
+
+   -- import the root folder (eg: blue_yellow_app), then use blue_yellow_app.__file__ instead of __file__. 
+
+      -- This makes sure that ps.path.dirname(blue_yellow_app.__file__) points to the root directory 'blue_yellow_app'
+
+   -- So this adjustment needs to be done for each project.
+
+
+7. Using tal
+============
+
+-- In most cases eg: tal:repeat, tal:confition 
+
+   -- we are not replacing values, so we don't use the substitution in chameleon like ${
+   -- instead we are just accessing it, so use it like tal:repeat = "a albums"
+
+8. Using tal and view together
+=============================
+
+-- we can put attributes in BaseController as explained above and then access it using view
+
+   -- This view can also be used in tal like so - tal:condition = "view.is_logged_in" or tal:condition = "not view.is_logged_in"
+
+9. Using shared layout for html templates
+=========================================
+
+-- Put all the common html in one html template like _layout.pt
+
+-- Then define a macro for _layout.pt -- metal:define_macro="layout"
+
+-- Then whereever in the _layout.pt you want to customize use -- metal:define-slot="main_content"
+
+-- Now go to the custom template like about.pt
+
+   -- Use the macro that was defined in the shared template -- metal:use_macro="view.layout"
+      -- This brings in all the common stuff from _layout.pt
+
+      -- We see that we are using view.macro
+
+         -- We cannot directly use the macro name that was defined in the shared template
+
+         -- That macro needs to be wired to the view(base_controller) so that other templates can use it
+
+         layout_render = pyramid.renderers.get_renderer("blue_yellow_app:templates/shared/_layout.pt")
+         impl = layout_render.implementation()
+         self.layout = impl.macros['layout']
+
+      -- Now you can use view.layout in other templates
+
+   -- Now fill the slots using -- metal:fill_slot="main_content"
+
+      -- This will customize the _layout.pt with the contents from about.pt
+
+
+
+         
+
+   -- 
+
+      

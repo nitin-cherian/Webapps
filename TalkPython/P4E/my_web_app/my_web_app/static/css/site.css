@@ -1,0 +1,24 @@
+body {
+    color: black;
+    background-color: white;
+}
+
+.main_content {
+    line-height: 1.5em;
+    padding: 20px;
+}
+
+.nav {
+    background-color: black;
+    color: white;
+    font-size: 18px;
+}
+
+.nav a {
+    color: white;
+    margin: 10px;
+}
+
+.nav a:visited, .nav a:active {
+    text-decoration: none;
+}
