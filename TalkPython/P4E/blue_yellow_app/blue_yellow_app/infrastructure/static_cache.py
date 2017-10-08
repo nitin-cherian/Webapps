@@ -23,7 +23,7 @@ __hash_lookup = dict()
 
 # Set this to False in production, True in development
 recompute_caches_every_request = False
-enable_tracing = True
+enable_tracing = False  # Enable this for tracing logs
 
 
 def build_cache_id(relative_file_url: str):

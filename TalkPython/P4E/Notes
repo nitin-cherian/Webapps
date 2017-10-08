@@ -180,10 +180,42 @@ Resolution: Put static_cache.py in the same level as the static folder.
 
       -- This will customize the _layout.pt with the contents from about.pt
 
+10. Using name attribute on pyramid_handlers.action(renderer=.., request_method=.., name=..)
+===========================================================================================
+
+    -- To handle a single name for url but can handle multiple methods
+
+       -- for instance GET of html form for register.pt and POST on submitting the button of /account/register
+
+          can be handled like so:
+
+          # GET /account/register
+          @pyramid_handlers.action(renderer='templates/account/register.pt',
+                                   request_method='GET',
+                                   name='register')
+          def register_get(self):
+              print("Calling register for GET..")
+              return {}
+
+          # POST /account/register
+          @pyramid_handlers.action(renderer='templates/account/register.pt',
+                                   request_method='POST',
+                                   name='register')
+          def register_post(self):
+              print("Calling register for POST..")
+              return {}
 
 
-         
+11. How do we get the data from the html form
+=============================================
 
-   -- 
+    -- The data comes in the POST request
 
-      
+    -- It comes through the self.request in the BaseController and can be used by the derived classes of the BaseController.
+
+    -- Any time we POST data, it gets stored in self.request.POST which is a dictionary
+
+12. Raising HTTPExceptions for eg: redirect
+==========================================
+
+    -- import pyramid.httpexceptions

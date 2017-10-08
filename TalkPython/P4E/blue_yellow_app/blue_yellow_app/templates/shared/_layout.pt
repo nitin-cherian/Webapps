@@ -34,7 +34,7 @@
 <div class="nav">
     <div style="float: right;">
         <a href="#" tal:condition="not view.is_logged_in">sign in</a>
-        <a href="#" tal:condition="not view.is_logged_in">register</a>
+        <a href="/account/register" tal:condition="not view.is_logged_in">Register</a>
         <a href="#" tal:condition="view.is_logged_in">account</a>
         <a href="#" tal:condition="view.is_logged_in">logout</a>
     </div>
