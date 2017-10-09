@@ -219,3 +219,12 @@ Resolution: Put static_cache.py in the same level as the static folder.
 ==========================================
 
     -- import pyramid.httpexceptions
+
+13. The 'viewmodels' directory
+==============================
+
+    -- Separates the validations and the form data gathering  from the controller
+
+    -- Provides a separate higher layer above the controller layer
+
+    -- controller is only left with doing simple things like returning dictionary.

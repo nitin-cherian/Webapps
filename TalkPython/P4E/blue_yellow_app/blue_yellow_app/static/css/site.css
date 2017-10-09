@@ -50,3 +50,8 @@ body {
 .standard-form input, .standard-form button {
     margin: 10px;
 }
+
+/************** ERRORS ********************/
+.error-msg {
+    color: red;
+}
