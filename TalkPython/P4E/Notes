@@ -228,3 +228,21 @@ Resolution: Put static_cache.py in the same level as the static folder.
     -- Provides a separate higher layer above the controller layer
 
     -- controller is only left with doing simple things like returning dictionary.
+
+14. Client side validations
+===========================
+
+-- required - In HTML5, the 'required' attribute can be used to make a field in html form mandatory.
+
+   -- The request will not go to server until the validations are through.
+
+-- Does this mean, we should remove the server side validations ?
+
+   -- No. This is because, user can modify the html form through some app and still send request to server.
+   -- The Client side validations are there to make the user experience nice.
+
+-- type="email" -- this does client side validation for a valid email address.
+
+
+
+
