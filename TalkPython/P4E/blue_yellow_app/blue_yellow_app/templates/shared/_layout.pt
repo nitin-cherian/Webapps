@@ -5,15 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="pyramid web application">
-    <meta name="author" content="Pylons Project">
+    <meta name="author" content="Nitin Cherian">
     <link rel="shortcut icon" href="/static/img/fav.png?cache_id=${view.build_cache_id('/static/img/fav.png')}">
 
-    <title>Cookiecutter Starter project for the Pyramid Web Framework</title>
+    <title>Blue / Yellow Rockets</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/static/bower_components/bootstrap-css/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/static/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
+          type="text/css">
 
     <!-- Custom styles for this scaffold -->
+    <link href="/static/css/landing-page.css?cache_id=${view.build_cache_id('/static/css/landing-page.css')}"
+          rel="stylesheet">
     <link href="/static/css/theme.css?cache_id=${view.build_cache_id('/static/css/theme.css')}" rel="stylesheet">
     <link href="/static/css/site.css?cache_id=${view.build_cache_id('/static/css/site.css')}" rel="stylesheet">
     <div metal:define-slot="additional_css"></div>
@@ -31,30 +38,71 @@
 
 <body>
 
-<div class="nav">
-    <div style="float: right;">
-        <a href="#" tal:condition="not view.is_logged_in">sign in</a>
-        <a href="/account/register" tal:condition="not view.is_logged_in">Register</a>
-        <a href="#" tal:condition="view.is_logged_in">account</a>
-        <a href="#" tal:condition="view.is_logged_in">logout</a>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Blue / Yellow Rockets</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/albums">Albums</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/bookus">BookUs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/account/signin">Sign In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/account/register">Register</a>
+                </li>
+            </ul>
+        </div>
     </div>
-
-    <a href="/home/index">Home</a>
-    <a href="/albums">Albums</a>
-    <a href="/home/about">About</a>
-    <a href="/home/contact">Contact</a>
-</div>
+</nav>
 
 <div class="main_content">
     <div metal:define-slot="main_content"></div>
 </div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <a href="#">Home</a>
+            </li>
+            <li class="footer-menu-divider list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+                <a href="#about">About</a>
+            </li>
+            <li class="footer-menu-divider list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+                <a href="#services">Services</a>
+            </li>
+            <li class="footer-menu-divider list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+        <p class="copyright text-muted small">Copyright &copy; Your Company 2017. All Rights Reserved</p>
+    </div>
+</footer>
 
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="/static/bower_components/bootstrap-css/css/bootstrap.min.css"></script>
+<script src="/static/bower_components/popper.js/dist/umd/popper.min.js"></script>
+<script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <div metal:define-slot="additional_js"></div>
 </body>
 </html>
