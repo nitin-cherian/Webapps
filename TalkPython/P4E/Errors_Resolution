@@ -1,0 +1,15 @@
+1. Issue: Picked up theme from bootstrap themes online. But porting the index.html to layout does not render the pages correctly
+================================================================================================================================
+
+Resolution: The bootstrap version used in the theme online(v4) is different than the bootstrap that is downloaded using bower(v3).
+
+To get bootstrap v4,
+
+do # bower install bootstrap#4.0
+
+2. Error: Bootstrap dropdown require Popper.js
+==============================================
+
+This issue occurs in bootstrap v4 which has a dependency on popper.js
+
+Resolution: The path to include in html page needs to be corrected. Use popper.js in umd folder
