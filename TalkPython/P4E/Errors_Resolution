@@ -13,3 +13,14 @@ do # bower install bootstrap#4.0
 This issue occurs in bootstrap v4 which has a dependency on popper.js
 
 Resolution: The path to include in html page needs to be corrected. Use popper.js in umd folder
+
+3. Customizing .bg-dark class of navbar in bootstrap4 does not seem to work
+==========================================================================
+
+-- The sass in v4 always overrides our custom css
+
+-- Instead use a change the name of .bg-dark to .bg-webapp-dark(your own class) and put your color inside this class
+
+https://stackoverflow.com/questions/43381596/bootstrap-4-navbar-color
+
+

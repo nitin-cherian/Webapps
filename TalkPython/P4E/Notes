@@ -245,4 +245,25 @@ Resolution: Put static_cache.py in the same level as the static folder.
 
 
 
+15. Porting themes into our project
+===================================
 
+-- Needed stuff -- the custom css file, images, index.html
+
+-- All other css, images we will be having
+
+-- Then open up index.html
+
+-- Move the elements in index.html one by one, indentifying the common stuff and the specific stuff
+
+-- The common stuff goes into the shared layout, the specifics goes into specific templates.
+
+
+16. Bootstrap4 navbar
+====================
+
+-- The class for dark background is .navbar-dark .bg-dark
+
+    https://getbootstrap.com/docs/4.0/components/navbar/
+
+-- The class .navbar-inverse seems to be deprecated in v4

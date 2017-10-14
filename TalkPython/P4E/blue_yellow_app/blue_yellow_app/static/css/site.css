@@ -6,7 +6,8 @@ body {
 
 .main_content {
     line-height: 1.5em;
-    padding: 20px;
+    padding: 0px;
+    margin-top: 52px;
 }
 
 .nav {
@@ -24,6 +25,14 @@ body {
 
 .nav a:hover, .nav a:active {
     text-decoration: underline;
+}
+
+.blue-foreground {
+    color: #326aa5;
+}
+
+.yellow-foreground {
+    color: #ffdb3d;
 }
 
 /***************** ALBUMS LIST *************/

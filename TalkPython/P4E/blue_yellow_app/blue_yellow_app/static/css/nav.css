@@ -1,0 +1,9 @@
+/*overriding bg-dark in bootstrap*/
+.bg-webapp-dark {
+    background-color: #000;
+    border-color: #080808;
+}
+
+.navbar-brand img {
+    height: 30px;
+}
