@@ -4,30 +4,21 @@
     <!-- Header -->
     <header class="intro-header">
       <div class="container">
-        <div class="intro-message">
-          <h1>Landing Page</h1>
-          <h3>A Template by Start Bootstrap</h3>
-          <hr class="intro-divider">
+        <div class="intro-message hero-message">
+          <h1>Blue/Yellow Rockets</h1>
           <ul class="list-inline intro-social-buttons">
             <li class="list-inline-item">
-              <a href="#" class="btn btn-secondary btn-lg">
-                <i class="fa fa-twitter fa-fw"></i>
-                <span class="network-name">Twitter</span>
+              <a href="/albums" class="btn btn-primary btn-lg" role="button">
+                Albums
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="#" class="btn btn-secondary btn-lg">
-                <i class="fa fa-github fa-fw"></i>
-                <span class="network-name">Github</span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#" class="btn btn-secondary btn-lg">
-                <i class="fa fa-linkedin fa-fw"></i>
-                <span class="network-name">Linkedin</span>
+              <a href="#" class="btn btn-primary btn-lg" role="button">
+                Upcoming events
               </a>
             </li>
           </ul>
+          <h3>For those about to rock, we invoke you</h3>
         </div>
       </div>
     </header>
