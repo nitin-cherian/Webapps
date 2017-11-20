@@ -7,15 +7,25 @@
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
 <body class="bg-light">
+{% if clickbait %}
+    <div class="alert alert-danger">
+        <strong>CLICKBAIT</strong> This headline could be dangerous
+    </div>
+{% elif clickbait == False %}
+    <div class="alert alert-success">
+        This headline looks OK
+    </div>
+{% endif %}
 
-<div class="container mt-5">
+<div class="container">
     <div class="w-50 mx-auto">
         <form action="./" method="post">
-            <div class="form-inline row">
+            <div class="form-inline row align-items-center no-gutters" style="height:500px">
                 <input class="form-control col-sm-8" type="text" name="headline" placeholder="Enter headline..">
                 <button class="btn btn-primary col-sm-3 ml-auto" type="submit">Check</button>
             </div>
         </form>
+
     </div>
 </div>
 
